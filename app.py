@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from database import Todo
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -15,6 +14,7 @@ class Todo(db.Model):
     
     
     def __repr__(self):
+        
         return f"task number is {self.id}"
     
       
