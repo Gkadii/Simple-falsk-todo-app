@@ -8,31 +8,35 @@
 {% block body %}
 
 <div>
-
-    <table>
-        
-        <tr>
-            <th>Task</th>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
-        
-        {%for task in tasks %}
-
-        <tr>
-            <td>{{task.content}}</td>
-            <td>{{task.date}}</td>
-            <td>
-                <a  type="button" class="btn btn-primary" href="/update/{{task.id}}">update</a>
-                <a  type="button" class="btn btn-danger" href="/delete/{{task.id}}">Delete</a>
-            </td>
+    
+    {% if tasks.count() < 1 %}
+        <h1>There is no task for you start doing something god damn it</h1>
+    {% else %}
+        <table>
             
+            <tr>
+                <th>Task</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
             
-        </tr>
+            {%for task in tasks %}
 
-        {% endfor %}
+            <tr>
+                <td>{{task.content}}</td>
+                <td>{{task.date}}</td>
+                <td>
+                    <a  type="button" class="btn btn-primary" href="/update/{{task.id}}">update</a>
+                    <a  type="button" class="btn btn-danger" href="/delete/{{task.id}}">Delete</a>
+                </td>
+                
+                
+            </tr>
 
-    </table>
+            {% endfor %}
+
+        </table>
+    {% endif %}
     <table>
         <td>
             <form  method='POST' action="/">
